@@ -1,0 +1,568 @@
+/* Styles généraux */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --danger-color: #e74c3c;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --text-color: #2c3e50;
+    --text-light: #7f8c8d;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+}
+
+/* Amélioration des en-têtes */
+.ui-header {
+    background: linear-gradient(135deg, var(--primary-color), #2980b9) !important;
+    border: none !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.ui-header h1 {
+    color: white !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    font-weight: 600 !important;
+}
+
+/* Style pour les boutons */
+.ui-btn {
+    transition: var(--transition) !important;
+    border-radius: var(--border-radius) !important;
+    font-weight: 500 !important;
+}
+
+.ui-btn.ui-btn-inline {
+    margin: 0.5em 0.5em 0.5em 0 !important;
+}
+
+.ui-btn.ui-btn-active {
+    background: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+/* Style pour les champs de formulaire */
+.ui-input-text, .ui-input-search, .ui-input-text.ui-focus {
+    border-radius: var(--border-radius) !important;
+    border: 1px solid #ddd !important;
+    transition: var(--transition) !important;
+    box-shadow: none !important;
+    margin: 0.5em 0 !important;
+}
+
+.ui-input-text:focus, .ui-input-search:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2) !important;
+}
+
+/* Style pour les photos de contact */
+.contact-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: var(--box-shadow);
+    object-fit: cover;
+    transition: var(--transition);
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.contact-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.contact-photo-container {
+    position: relative;
+    display: inline-block;
+    margin: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.contact-photo-container .ui-btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    margin: 0;
+    line-height: 36px;
+}
+
+/* Style pour la liste des contacts */
+#contactList {
+    margin: 0;
+    padding: 0;
+}
+
+#contactList li {
+    position: relative;
+    padding: 15px 15px 15px 70px;
+    min-height: 70px;
+    border-bottom: 1px solid #eee;
+    transition: var(--transition);
+    background: white;
+    margin: 5px 0;
+    border-radius: var(--border-radius);
+    list-style: none;
+}
+
+#contactList li:active {
+    background-color: #f8f9fa;
+}
+
+#contactList .contact-avatar {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: var(--transition);
+}
+
+#contactList .contact-name {
+    font-weight: 600;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--dark-color);
+    font-size: 1.1em;
+    margin-bottom: 3px;
+}
+
+#contactList .contact-phone {
+    font-size: 0.9em;
+    color: var(--text-light);
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Effet de survol sur les éléments de la liste */
+#contactList li:not(.ui-listview-item):hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Style pour la sélection multiple */
+#contactList.ui-listview .ui-checkbox {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -20px;
+}
+
+/* Style pour le formulaire */
+.ui-field-contain {
+    padding: 10px 15px;
+    margin: 1em 0;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.ui-field-contain:first-child {
+    margin-top: 0;
+}
+
+.ui-field-contain label {
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Style pour les groupes de champs */
+.field-group {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.field-group h3 {
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    color: var(--primary-color);
+    font-size: 1.1em;
+}
+
+/* Style pour les champs obligatoires */
+.required:after {
+    content: " *";
+    color: var(--danger-color);
+    font-weight: bold;
+}
+
+/* Style pour les messages d'erreur */
+.error-message {
+    color: var(--danger-color);
+    padding: 12px 15px;
+    margin: 15px 0;
+    background-color: #fdecea;
+    border-radius: var(--border-radius);
+    display: none;
+    border-left: 4px solid var(--danger-color);
+    font-size: 0.95em;
+}
+
+/* Style pour les messages de succès */
+.success-message {
+    color: #27ae60;
+    padding: 12px 15px;
+    margin: 15px 0;
+    background-color: #e8f8f0;
+    border-radius: var(--border-radius);
+    display: none;
+    border-left: 4px solid #27ae60;
+    font-size: 0.95em;
+}
+
+/* Style pour les boutons d'action */
+.action-buttons {
+    margin: 20px 0;
+}
+
+/* Style pour le mode sélection */
+.selection-mode .ui-header h1:after {
+    content: " (Sélection)";
+    font-size: 0.7em;
+    opacity: 0.8;
+}
+
+/* Animation de chargement */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0,0,0,0.1);
+    border-radius: 50%;
+    border-top-color: #3498db;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Style pour les messages d'erreur */
+.error-message {
+    color: #e74c3c;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #fdecea;
+    border-radius: 4px;
+    display: none;
+}
+
+/* Style pour les champs invalides */
+input:invalid, textarea:invalid {
+    border-color: #e74c3c !important;
+    background-color: #fdecea !important;
+}
+
+/* Style pour le pied de page */
+[data-role="footer"] {
+    text-align: center;
+}
+
+[data-role="footer"] h4 {
+    margin: 10px 0;
+    font-weight: normal;
+    font-size: 0.8em;
+    color: #7f8c8d;
+}
+
+/* Style pour les écrans larges */
+@media (min-width: 768px) {
+    .ui-page {
+        max-width: 768px;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    .contact-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 75px;
+    }
+}
+
+/* Amélioration de la lisibilité sur fond clair */
+.ui-page {
+    background-color: #f5f5f5;
+}
+
+.ui-content {
+    background-color: #fff;
+}
+
+/* Style pour les boutons d'action flottants */
+.floating-action-button {
+    position: fixed !important;
+    bottom: 30px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50% !important;
+    line-height: 60px !important;
+    font-size: 24px !important;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    background: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    transition: var(--transition) !important;
+    text-align: center;
+    padding: 0 !important;
+}
+
+.floating-action-button:active, 
+.floating-action-button:focus, 
+.floating-action-button:hover {
+    background: #2980b9 !important;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+/* Style pour les boutons secondaires */
+.secondary-button {
+    background: var(--light-color) !important;
+    color: var(--text-color) !important;
+    border: 1px solid #ddd !important;
+}
+
+.secondary-button:active, 
+.secondary-button:focus, 
+.secondary-button:hover {
+    background: #e0e0e0 !important;
+}
+
+/* Style pour les boutons de danger */
+.danger-button {
+    background: var(--danger-color) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.danger-button:active, 
+.danger-button:focus, 
+.danger-button:hover {
+    background: #c0392b !important;
+}
+
+/* Style pour les listes vides */
+.empty-list {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-light);
+    background: white;
+    border-radius: var(--border-radius);
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.empty-list .ui-icon {
+    font-size: 48px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.empty-list p {
+    font-size: 1.1em;
+    margin: 10px 0 0;
+    color: var(--text-light);
+}
+
+/* Animation de chargement améliorée */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(52, 152, 219, 0.2);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 0.8s ease-in-out infinite;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Amélioration des transitions de page */
+.ui-page {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0.8; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Amélioration de la barre de recherche */
+.ui-input-search {
+    margin: 10px 0 !important;
+    border-radius: 20px !important;
+    background: white !important;
+    border: 1px solid #ddd !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+}
+
+/* Style pour les séparateurs de section */
+.ui-listview > li.ui-listview-divider {
+    background: linear-gradient(to right, var(--primary-color), #3498db);
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin: 5px 0 2px 0;
+    padding: 0.4em 15px;
+    border: none;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+    min-height: 1.2em;
+    line-height: 1.2em;
+    height: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Surcharge des styles de jQuery Mobile pour les séparateurs */
+.ui-listview > li.ui-listview-divider,
+.ui-listview > li.ui-li-divider {
+    padding-top: 0.4em !important;
+    padding-bottom: 0.4em !important;
+    line-height: 1.2em !important;
+    min-height: 1.2em !important;
+    height: auto !important;
+    margin-top: 5px !important;
+    margin-bottom: 2px !important;
+}
+
+/* Style pour les onglets */
+.ui-navbar {
+    background: white !important;
+    border: none !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.ui-navbar .ui-btn {
+    border: none !important;
+    background: transparent !important;
+    color: var(--text-light) !important;
+    font-weight: 500 !important;
+    text-shadow: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    transition: var(--transition) !important;
+}
+
+.ui-navbar .ui-btn.ui-btn-active {
+    color: var(--primary-color) !important;
+    background: transparent !important;
+    box-shadow: inset 0 -3px 0 var(--primary-color) !important;
+}
+
+/* Style pour les cartes de contact */
+.contact-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.contact-card:active {
+    transform: scale(0.98);
+}
+
+/* Style pour les badges */
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    font-size: 0.75em;
+    font-weight: 600;
+    line-height: 1;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    opacity: 0.5;
+    margin-bottom: 15px;
+}
+
+/* Style pour les séparateurs de liste */
+.ui-li-divider {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+}
+
+/* Style pour les champs de formulaire */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+textarea {
+    border-radius: 4px !important;
+    padding: 10px !important;
+    margin-bottom: 15px !important;
+}
+
+textarea {
+    min-height: 80px !important;
+    resize: vertical;
+}
+
+/* Animation de fondu */
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+.blink {
+    animation: fade 3000ms infinite;
+    -webkit-animation: fade 3000ms infinite;
+}
+
+
+@media screen and (prefers-color-scheme: dark) {
+    body {
+        background-image:linear-gradient(to bottom, #585858 0%, #1B1B1B 51%);
+    }
+}

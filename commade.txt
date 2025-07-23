@@ -1,0 +1,4 @@
+npm install
+cordova platform add android
+cordova prepare
+cordova build android

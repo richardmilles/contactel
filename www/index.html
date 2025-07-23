@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestion de Contacts</title>
+    
+    <!-- jQuery Mobile -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    
+    <!-- Cordova -->
+    <script>
+        // Vérifier si on est dans un environnement Cordova avant de charger cordova.js
+        (function() {
+            var isCordovaApp = (typeof window.cordova !== 'undefined');
+            if (isCordovaApp) {
+                var script = document.createElement('script');
+                script.src = 'cordova.js';
+                document.head.appendChild(script);
+            }
+        })();
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/index.css" />
+    
+    <!-- Script pour la gestion des chemins d'accès -->
+    <script>
+        // Définir le chemin de base pour les ressources
+        var basePath = window.location.href.replace(/\/[^\/]*$/, '');
+        
+        // Fonction utilitaire pour résoudre les chemins
+        function getResourcePath(path) {
+            // Si c'est une URL complète ou un chemin absolu, on le garde tel quel
+            if (path.match(/^(https?:|\/)/)) return path;
+            // Sinon, on ajoute le chemin de base
+            return basePath + '/' + path;
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Page d'accueil -->
+    <div data-role="page" id="home">
+        <div data-role="header" data-position="fixed">
+            <h1>Mes Contacts</h1>
+            <a href="#add-contact" class="ui-btn ui-btn-right ui-icon-plus ui-btn-icon-notext">Ajouter</a>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <a href="#" id="selectBtn" class="ui-btn ui-btn-icon-left ui-icon-check">Sélectionner</a>
+                </div>
+                <div class="ui-block-b" style="text-align:right;">
+                    <a href="#" id="deleteSelectedBtn" class="ui-btn ui-btn-icon-left ui-icon-delete ui-btn-b">Supprimer</a>
+                </div>
+            </div>
+            
+            <ul data-role="listview" data-inset="true" id="contactList" data-filter="true" data-filter-placeholder="Rechercher un contact...">
+                <!-- Les contacts seront ajoutés ici dynamiquement -->
+            </ul>
+        </div>
+
+        <div data-role="footer" data-position="fixed">
+            <h4>IABD@2025</h4>
+        </div>
+    </div>
+
+    <!-- Formulaire d'ajout/modification de contact -->
+    <div data-role="page" id="add-contact">
+        <div data-role="header" data-position="fixed">
+            <h1>Nouveau Contact</h1>
+            <a href="#home" class="ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-notext">Retour</a>
+            <a href="#" id="saveContactBtn" class="ui-btn ui-btn-right ui-icon-check ui-btn-icon-notext">Enregistrer</a>
+        </div>
+
+        <div role="main" class="ui-content">
+            <div style="text-align: center; margin: 15px 0;">
+                <div class="contact-photo-container">
+                    <img id="contactPhoto" src="img/contact_icone.jpg" class="contact-photo" />
+                    <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                    <a href="#" id="changePhotoBtn" class="ui-btn ui-icon-camera ui-btn-icon-notext ui-corner-all">Changer</a>
+                </div>
+            </div>
+
+            <div class="ui-field-contain">
+                <label for="firstName">Prénom *</label>
+                <input type="text" name="firstName" id="firstName" placeholder="Prénom" required>
+                
+                <label for="lastName">Nom *</label>
+                <input type="text" name="lastName" id="lastName" placeholder="Nom" required>
+                
+                <label for="phone">Téléphone *</label>
+                <input type="tel" name="phone" id="phone" placeholder="Numéro de téléphone" required>
+                
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Adresse email">
+                
+                <label for="address">Adresse</label>
+                <textarea name="address" id="address" placeholder="Adresse complète"></textarea>
+            </div>
+            
+            <input type="hidden" id="contactId" value="">
+        </div>
+    </div>
+
+    <!-- Détails du contact -->
+    <div data-role="page" id="contact-details">
+        <div data-role="header" data-position="fixed">
+            <h1>Détails</h1>
+            <a href="#home" class="ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-notext">Retour</a>
+            <a href="#" id="editContactBtn" class="ui-btn ui-btn-right ui-icon-edit ui-btn-icon-notext">Modifier</a>
+        </div>
+
+        <div role="main" class="ui-content">
+            <div style="text-align: center; margin: 15px 0;">
+                <img id="detailPhoto" src="" class="contact-photo" />
+            </div>
+            
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">Informations</li>
+                <li>
+                    <h2 id="detailName"></h2>
+                    <p id="detailPhone" class="ui-li-aside"></p>
+                </li>
+                <li data-role="list-divider">Coordonnées</li>
+                <li>
+                    <a href="#" id="phoneLink">
+                        <h2>Téléphone</h2>
+                        <p id="detailPhone2"></p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="emailLink">
+                        <h2>Email</h2>
+                        <p id="detailEmail"></p>
+                    </a>
+                </li>
+                <li>
+                    <h2>Adresse</h2>
+                    <p id="detailAddress"></p>
+                </li>
+            </ul>
+            
+            <div class="ui-grid-solo" style="margin: 20px 0;">
+                <div class="ui-block-a">
+                    <a href="#" id="deleteContactBtn" class="ui-btn ui-btn-b ui-icon-delete ui-btn-icon-left">Supprimer le contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
