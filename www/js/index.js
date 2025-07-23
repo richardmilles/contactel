@@ -119,10 +119,10 @@ function updateContactList() {
         $contactList.append('<li class="empty-list"><span class="ui-icon ui-icon-info"></span><p>Aucun contact enregistré</p></li>');
         return;
     } 
-     
+    
     // Grouper les contacts par première lettre du prénom
     var groupedContacts = {};
-    contacts.forEach(contact => {
+    contacts.forEach(contact => {    
         // Utiliser la première lettre du prénom pour le regroupement
         var firstLetter = contact.firstName.charAt(0).toUpperCase();
         if (!groupedContacts[firstLetter]) {
