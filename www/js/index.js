@@ -118,8 +118,8 @@ function updateContactList() {
     if (contacts.length === 0) {
         $contactList.append('<li class="empty-list"><span class="ui-icon ui-icon-info"></span><p>Aucun contact enregistré</p></li>');
         return;
-    }
-    
+    } 
+     
     // Grouper les contacts par première lettre du prénom
     var groupedContacts = {};
     contacts.forEach(contact => {
